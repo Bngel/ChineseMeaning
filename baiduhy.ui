@@ -21,7 +21,7 @@
    <string notr="true">#MainWindow{border-image:url(:/pic/82014087_p0.jpg);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -33,6 +33,9 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLineEdit" name="lineEdit">
+       <property name="styleSheet">
+        <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+       </property>
        <property name="placeholderText">
         <string>输入查找的词语</string>
        </property>
@@ -47,6 +50,9 @@
      </item>
      <item>
       <widget class="QTextEdit" name="textEdit">
+       <property name="styleSheet">
+        <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>

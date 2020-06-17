@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import bk_source_qc
-#from CiyuSpider import Ciyu
 from HandianSpider import Handn
 
 class Ui_MainWindow(object):
@@ -23,24 +22,27 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet("#MainWindow{border-image:url(:/pic/82014087_p0.jpg);}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(20, 10, 281, 401))
-        self.widget.setObjectName("widget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 10, 281, 401))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.lineEdit = QtWidgets.QLineEdit(self.widget)
+        self.lineEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.lineEdit.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.lineEdit.setObjectName("lineEdit")
         self.verticalLayout.addWidget(self.lineEdit)
-        self.pushButton = QtWidgets.QPushButton(self.widget)
+        self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
-        self.textEdit = QtWidgets.QTextEdit(self.widget)
+        self.textEdit = QtWidgets.QTextEdit(self.layoutWidget)
+        #设置文本框背景透明!!!: background:transparent;border-width:0;border-style:outset
+        self.textEdit.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout.addWidget(self.textEdit)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.pushButton.clicked.connect(self.pass_text)
+        self.pushButton.clicked.connect(self.get_data)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -55,15 +57,11 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'SimSun\';\"><br /></p></body></html>"))
 
-    def pass_text(self):
-        try:
-            text = self.lineEdit.text()
-            ciyu = Handn(text)
-            ciyu.get_info()
-            tex = ''
-            for values in ciyu.data:
-                    tex = tex + values + '\n'
-        except Exception as e:
-            tex = '查无此词儿'
+    def get_data(self):
+        tx = self.lineEdit.text()
+        hdn = Handn(tx)
+        hdn.get_info()
+        tex = ''
+        for info in hdn.data:
+            tex = tex + info +'\n'
         self.textEdit.setText(tex)
-
