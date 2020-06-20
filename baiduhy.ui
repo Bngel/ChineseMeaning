@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>百度汉语释义</string>
+   <string>汉典披萨</string>
   </property>
   <property name="windowIcon">
    <iconset resource="bk_source.qrc">
@@ -34,7 +34,10 @@
      <item>
       <widget class="QLineEdit" name="lineEdit">
        <property name="styleSheet">
-        <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+        <string notr="true">#lineEdit{
+background:transparent;
+border-width:0
+}</string>
        </property>
        <property name="placeholderText">
         <string>输入查找的词语</string>
@@ -51,7 +54,8 @@
      <item>
       <widget class="QTextEdit" name="textEdit">
        <property name="styleSheet">
-        <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+        <string notr="true">background:transparent;
+border-width:0;</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>

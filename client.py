@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow
-from baiduhy import *
+from handn import *
 
 class HanyuForm(QMainWindow,Ui_MainWindow):
     def __init__(self,parent = None):
